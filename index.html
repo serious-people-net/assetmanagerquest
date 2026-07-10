@@ -759,11 +759,28 @@ document.addEventListener('keydown', function(event) {
     const key = event.key;
     const links = document.querySelectorAll('ol li a');
 
+    function clickMenuLink(index) {
+        var menuOptionsDiv = document.querySelector('.menu-options');
+        if (menuOptionsDiv) {
+            var menuLinks = menuOptionsDiv.getElementsByTagName('a');
+            if (menuLinks.length > index) {
+                menuLinks[index].click();
+            }
+        }
+    }
+
+    // Check which key is pressed and call the click function with appropriate index
+    if (event.key === '-') {
+        clickMenuLink(0); // Restart / start the game
+    } else if (event.key === '=') {
+        clickMenuLink(2); // Toggle music
+    }
+
     if (key >= '1' && key <= '3') {
-        /*const index = parseInt(key, 10) - 1; // Convert key to 0-based index
+        const index = parseInt(key, 10) - 1; // Convert key to 0-based index
         if (links[index]) {
             links[index].click();
-        }*/
+        }
     } else if (key === ']') {
         // Move down the list
         if (currentIndex < links.length - 1) {
@@ -801,7 +818,8 @@ function updateSelection(links) {
         links[currentIndex].classList.add('selected');
         links[currentIndex].focus();
     }
-}</script><tw-tag name="unlock" color="yellow"></tw-tag><tw-tag name="win" color="green"></tw-tag><tw-tag name="mystery" color="blue"></tw-tag><tw-tag name="nope" color="none"></tw-tag><tw-tag name="forest" color="green"></tw-tag><tw-tag name="title" color="green"></tw-tag><tw-tag name="rework" color="none"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="item" color="yellow"></tw-tag><tw-tag name="danger" color="orange"></tw-tag><tw-tag name="info" color="blue"></tw-tag><tw-tag name="ending" color="orange"></tw-tag><tw-tag name="damange" color="orange"></tw-tag><tw-tag name="success" color="green"></tw-tag><tw-tag name="down" color="purple"></tw-tag><tw-passagedata pid="1" name="Blow in wind" tags="" position="2700,1575" size="100,100">You blow through the wind, majestically
+}
+</script><tw-tag name="win" color="green"></tw-tag><tw-tag name="forest" color="green"></tw-tag><tw-tag name="title" color="green"></tw-tag><tw-tag name="unlock" color="yellow"></tw-tag><tw-tag name="ending" color="orange"></tw-tag><tw-tag name="danger" color="orange"></tw-tag><tw-tag name="success" color="green"></tw-tag><tw-tag name="info" color="blue"></tw-tag><tw-tag name="rework" color="none"></tw-tag><tw-tag name="down" color="purple"></tw-tag><tw-tag name="mystery" color="blue"></tw-tag><tw-tag name="damange" color="orange"></tw-tag><tw-tag name="nope" color="none"></tw-tag><tw-tag name="noreturn" color="red"></tw-tag><tw-tag name="item" color="yellow"></tw-tag><tw-passagedata pid="1" name="Blow in wind" tags="" position="2700,1575" size="100,100">You blow through the wind, majestically
 # [[Remedy acidic soils]]
 # [[Become a pile again|Stay as pile]]</tw-passagedata><tw-passagedata pid="2" name="Definitely remain ash" tags="" position="2875,1525" size="100,100">Ok, you&#39;re a pile of ash
 # [[Blow in wind]]

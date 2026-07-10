@@ -2,11 +2,28 @@ document.addEventListener('keydown', function(event) {
     const key = event.key;
     const links = document.querySelectorAll('ol li a');
 
+    function clickMenuLink(index) {
+        var menuOptionsDiv = document.querySelector('.menu-options');
+        if (menuOptionsDiv) {
+            var menuLinks = menuOptionsDiv.getElementsByTagName('a');
+            if (menuLinks.length > index) {
+                menuLinks[index].click();
+            }
+        }
+    }
+
+    // Check which key is pressed and call the click function with appropriate index
+    if (event.key === '-') {
+        clickMenuLink(0); // Restart / start the game
+    } else if (event.key === '=') {
+        clickMenuLink(2); // Toggle music
+    }
+
     if (key >= '1' && key <= '3') {
-        /*const index = parseInt(key, 10) - 1; // Convert key to 0-based index
+        const index = parseInt(key, 10) - 1; // Convert key to 0-based index
         if (links[index]) {
             links[index].click();
-        }*/
+        }
     } else if (key === ']') {
         // Move down the list
         if (currentIndex < links.length - 1) {
